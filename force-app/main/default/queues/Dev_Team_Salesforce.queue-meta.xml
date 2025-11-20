@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>true</doesSendEmailToMembers>
+    <email>teammfa@legendarysolutions.io</email>
+    <name>Dev Team (Salesforce)</name>
+    <queueMembers>
+        <users>
+            <user>aarushi@legendarysolutions.pbo</user>
+            <user>atul@legendarysolutions.pbo</user>
+            <user>awadesh@legendarysolutions.pbo</user>
+            <user>hafiz@legendarysolutions.pbo</user>
+            <user>kusuma@legendarysolutions.pbo</user>
+            <user>mohnish@legendarysolutions.pbo</user>
+            <user>prateek@legendarysolutions.pbo</user>
+            <user>puja@legendarysolutions.pbo</user>
+            <user>sumit@legendarysolutions.pbo</user>
+            <user>vinay@legendarysolutions.pbo</user>
+            <user>vishal@legendarysolutions.pbo</user>
+            <user>vishesh@legendarysolutions.pbo</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Jpetto__Project__c</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>Jpetto__Related_Work_Item__c</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>Task</sobjectType>
+    </queueSobject>
+</Queue>

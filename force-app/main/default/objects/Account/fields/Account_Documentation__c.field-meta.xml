@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_Documentation__c</fullName>
+    <inlineHelpText>Link to the shared folder in Google Drive that contains all documentation for all projects under this account.</inlineHelpText>
+    <label>Account Documentation</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Url</type>
+</CustomField>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HIPPA_Requirement__c</fullName>
+    <defaultValue>false</defaultValue>
+    <inlineHelpText>When true, ALL project team members are required to complete HIPPA certification before joining project team.</inlineHelpText>
+    <label>HIPPA Requirement</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

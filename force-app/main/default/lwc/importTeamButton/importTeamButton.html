@@ -1,0 +1,67 @@
+<template>
+    <!-- Import Button + Selected Members Pills -->
+    <div class="import-team-container">
+        <lightning-button
+            label="Import Team"
+            variant="brand-outline"
+            onclick={handleOpenModal}>
+        </lightning-button>
+
+        <!-- Scrollable imported members list -->
+        <template if:true={selectedMembersDisplay}>
+            <div class="selected-members-list">
+                <template for:each={selectedMembersDisplay} for:item="member" for:index="index">
+                    <div key={member.key} class="member-pill">
+                        {member.displayName}
+                        <button
+                            class="remove-btn"
+                            title="Remove Member"
+                            onclick={handleRemoveMember}
+                            data-index={index}>
+                            ✕
+                        </button>
+                    </div>
+                </template>
+            </div>
+        </template>
+    </div>
+
+    <!-- Existing Modal -->
+    <template if:true={showModal}>
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+
+                <header class="slds-modal__header">
+                    <h2 class="slds-text-heading_medium">Import Team Members</h2>
+                </header>
+
+                <div class="slds-modal__content slds-p-around_medium">
+                    <lightning-combobox
+                        label="Select Project"
+                        value={selectedProject}
+                        options={projectOptions}
+                        placeholder="Select a Project"
+                        onchange={handleProjectChange}>
+                    </lightning-combobox>
+
+                    <template if:true={teamData}>
+                        <lightning-datatable
+                            key-field="Id"
+                            data={teamData}
+                            columns={columns}
+                            show-row-number-column
+                            onrowselection={handleRowSelection}>
+                        </lightning-datatable>
+                    </template>
+                </div>
+
+                <footer class="slds-modal__footer">
+                    <lightning-button label="Cancel" onclick={handleCloseModal}></lightning-button>
+                    <lightning-button label="Import" variant="brand" onclick={handleImport}></lightning-button>
+                </footer>
+            </div>
+        </section>
+
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

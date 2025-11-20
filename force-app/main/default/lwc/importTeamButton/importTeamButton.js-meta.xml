@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Import Team Button</masterLabel>
+
+    <targets>
+        <target>lightning__RecordPage</target>
+        <target>lightning__AppPage</target>
+        <target>lightning__FlowScreen</target>
+    </targets>
+
+    <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen">
+            <property 
+                name="currentProjectId" 
+                type="String" 
+                label="Current Project Id" 
+                description="Id of the current project for filtering"
+            />
+            <property 
+                name="importedTeamJson" 
+                type="String" 
+                role="outputOnly" 
+                label="Imported Team Members JSON" 
+                description="JSON data returned from the component"
+            />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

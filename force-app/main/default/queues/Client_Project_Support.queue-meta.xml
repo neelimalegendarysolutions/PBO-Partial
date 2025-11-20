@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This queue has users who  manage cases from Client Projects</description>
+    <doesSendEmailToMembers>true</doesSendEmailToMembers>
+    <name>Client Project Support</name>
+    <queueMembers>
+        <users>
+            <user>chad@legendarysolutions.io</user>
+            <user>neelima@legendarysolutions.io.pbopartial</user>
+        </users>
+    </queueMembers>
+    <queueRoutingConfig>Email_Case_Routing</queueRoutingConfig>
+    <queueSobject>
+        <sobjectType>Case</sobjectType>
+    </queueSobject>
+</Queue>

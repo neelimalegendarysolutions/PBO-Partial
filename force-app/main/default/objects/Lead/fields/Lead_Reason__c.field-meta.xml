@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lead_Reason__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( ((BEGINS( TEXT(LeadSource) , &quot;SFDC-dup-TD&quot;)) ||(BEGINS( TEXT(LeadSource) , &quot;SFDC-TD&quot;))) , &quot;Test Drive&quot;, 
+IF( ((BEGINS( TEXT(LeadSource) , &quot;SFDC-dup-TS&quot;)) ||(BEGINS( TEXT(LeadSource) , &quot;SFDC-TS&quot;))) , &quot;Free Trail&quot;,
+IF( ((BEGINS( TEXT(LeadSource) , &quot;SFDC-dup-LM&quot;)) ||(BEGINS( TEXT(LeadSource) , &quot;SFDC-LM&quot;))) , &quot;Learn More&quot;,
+IF( ((BEGINS( TEXT(LeadSource) , &quot;SFDC-dup-DM&quot;)) ||(BEGINS( TEXT(LeadSource) , &quot;SFDC-DM&quot;))) , &quot;Demo Video&quot;,
+IF( ((BEGINS( TEXT(LeadSource) , &quot;SFDC-dup-IN&quot;)) ||(BEGINS( TEXT(LeadSource) , &quot;SFDC-IN&quot;))) , &quot;Installation&quot;,
+TEXT(LeadSource))))))</formula>
+    <label>Lead Reason</label>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

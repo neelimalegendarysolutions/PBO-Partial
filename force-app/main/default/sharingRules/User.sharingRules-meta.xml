@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingOwnerRules>
+        <fullName>SFPUC_SIP_Phase3_Team</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>SFPUC SIP Phase3 Team</label>
+        <sharedTo>
+            <portalRoleAndSubordinates>SFPUCSIPCustomerUser</portalRoleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <group>SFPUC_SIP_Phase3_Dev_Team</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>User_Sharing_for_Rau</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>User Sharing for Rau</label>
+        <sharedTo>
+            <portalRoleAndSubordinates>MSRauAntiquesCustomerUser</portalRoleAndSubordinates>
+        </sharedTo>
+        <sharedFrom>
+            <group>MS_Rau_Project_Managers</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+</SharingRules>

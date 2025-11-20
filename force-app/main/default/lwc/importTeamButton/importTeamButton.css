@@ -1,0 +1,43 @@
+.import-team-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.selected-members-list {
+    display: flex;
+    overflow-x: auto;
+    max-width: 420px;
+    padding: 0.25rem;
+}
+
+.member-pill {
+    background: #f3f6f9;
+    border: 1px solid #d8dde6;
+    border-radius: 20px;
+    padding: 0.25rem 0.75rem;
+    margin-right: 0.5rem;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    font-size: 0.8rem;
+}
+
+.remove-btn {
+    border: none;
+    background: none;
+    color: #c23934;
+    cursor: pointer;
+    margin-left: 5px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    line-height: 1;
+}
+
+.remove-btn:hover {
+    color: #a61b1b;
+}
+.slds-modal__footer lightning-button + lightning-button {
+    margin-left: 1rem; /* Adjust gap size as needed */
+}

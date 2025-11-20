@@ -1,0 +1,295 @@
+<template>
+    <template if:true={isSameStage}>
+        <div class="horizontal-scroll">
+            <ul class="custom-list">
+                <li class={bgClass}
+                    draggable="true"
+                    ondragstart={itemDragStart}
+                    ondragend={itemDragEnd}
+                    ondragover={handleDragOver}>
+
+                    <article class="slds-tile slds-tile_board slds-p-around_x-small">
+
+                        <!-- Row 1: Title + Action Menu -->
+                        <div class="slds-grid slds-grid_align-spread slds-grid_vertical-align-start slds-m-bottom_x-small">
+
+                            <!-- Left: Title -->
+                            <div class="slds-col slds-grow slds-truncate">
+                                <h3 class="slds-truncate" title={transformedRecord.Name}>
+                                    <a href={transformedRecord.recordUrl} target="_blank" class="slds-truncate">
+                                        <span class="slds-truncate slds-text-title_bold">
+                                            {transformedRecord.Name}
+                                        </span>
+                                    </a>
+                                </h3>
+                            </div>
+
+                            <!-- Right: Action dropdown menu -->
+                            <div if:true={enableActionMenu} class="slds-col slds-no-flex action-menu">
+                                <div class="menu-wrapper">
+
+                                    <!-- 3-dot trigger -->
+                                    <lightning-button-icon icon-name="utility:threedots_vertical"
+                                                           alternative-text="Actions"
+                                                           class="menu-trigger"
+                                                           onclick={toggleMenu}>
+                                    </lightning-button-icon>
+
+                                    <!-- Main menu -->
+                                    <span if:true={isMenuOpen}>
+                                        <ul class="menu">
+                                            <li class="menu-item" onclick={handleClickedLogHours}>Log Hours</li>
+                                            <li class="menu-item" onclick={handleAssign}>Assign</li>
+                                            <li class="menu-item" onclick={handleClose}>Close</li>
+
+                                            <!-- Move To submenu trigger -->
+                                            <li class="menu-item has-submenu" onmouseenter={showSubmenu}>
+                                                Move To ▸
+                                            </li>
+                                        </ul>
+                                    </span>
+
+                                </div>
+
+                                <!-- Log Hours modal -->
+                                <!-- <template if:true={showLogHours}>
+                                    <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_medium">
+                                        <div class="slds-modal__container">
+                                            <header class="slds-modal__header">
+                                                <h2 class="slds-text-heading_medium">Add Item</h2>
+                                            </header>
+                                            <div class="slds-modal__content slds-p-around_medium">
+                                                <p>Are you sure you want to close this work item? Please provide closing comments:</p>
+                                                <lightning-textarea 
+                                                    name="closingComments"
+                                                    label="Closing Comments"
+                                                    maxlength="255"
+                                                    required
+                                                    placeholder="Enter closing comments......"
+                                                    value={closingComments}
+                                                    onchange={handleCommentsChange}>
+                                                </lightning-textarea>
+                                            </div>
+                                            <footer class="slds-modal__footer">
+                                                <lightning-button variant="neutral" label="Cancel" onclick={handleCancel}></lightning-button>
+                                                <lightning-button class="slds-m-left_small" variant="brand" label="Save" onclick={handleSavedLogHours}></lightning-button>
+                                            </footer>
+                                        </div>
+                                    </section>
+                                    <div class="slds-backdrop slds-backdrop_open"></div>
+                                </template> -->
+                                <template if:true={showLogHours}>
+                                    <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_medium">
+                                        <div class="slds-modal__container">
+                                            <header class="slds-modal__header">
+                                                <h2 class="slds-text-heading_medium">Add Timesheet Entry</h2>
+                                            </header>
+
+                                            <div class="slds-modal__content slds-p-around_medium">
+                                                <template if:true={sections}>
+                                                    <lightning-record-edit-form
+                                                        object-api-name={timesheetEntryObjectApiName}
+                                                        onsuccess={handleSuccess}
+                                                        onerror={handleError} data-id="timesheetForm">
+                                                        
+                                                        <template for:each={sections} for:item="section">
+                                                            <div key={section.id} class="slds-section slds-is-open slds-p-around_small">
+                                                                <h3 class="slds-section__title slds-theme_shade slds-p-around_x-small">
+                                                                    <span class="slds-truncate" title={section.heading}>{section.heading}</span>
+                                                                </h3>
+
+                                                                <div class="slds-section__content slds-p-around_small">
+                                                                    <!-- Loop through layoutRows -->
+                                                                    <template for:each={section.layoutRows} for:item="layoutRow">
+                                                                        <!-- Render each row as a horizontal layout -->
+                                                                        <lightning-layout key={layoutRow.id} multiple-rows="true" pull-to-boundary="small">
+                                                                            <template for:each={layoutRow.layoutItems} for:item="layoutItem">
+                                                                                <lightning-layout-item
+                                                                                    key={layoutItem.id}
+                                                                                    size="6"
+                                                                                    padding="horizontal-small">
+                                                                                    
+                                                                                    <template for:each={layoutItem.layoutComponents} for:item="layoutComponent">
+                                                                                        <lightning-input-field
+                                                                                            key={layoutComponent.apiName}
+                                                                                            field-name={layoutComponent.apiName}
+                                                                                            required={layoutItem.required}>
+                                                                                        </lightning-input-field>
+                                                                                    </template>
+
+                                                                                </lightning-layout-item>
+                                                                            </template>
+                                                                        </lightning-layout>
+                                                                    </template>
+                                                                </div>
+                                                            </div>
+                                                        </template>
+                                                    </lightning-record-edit-form>
+                                                </template>
+
+                                            </div>
+
+                                            <footer class="slds-modal__footer">
+                                                <lightning-button variant="neutral" label="Cancel" onclick={handleCancel}></lightning-button>
+                                                <lightning-button class="slds-m-left_small" variant="brand" label="Save" onclick={handleSaveClick}></lightning-button>
+                                            </footer>
+                                        </div>
+                                    </section>
+
+                                    <div class="slds-backdrop slds-backdrop_open"></div>
+                                </template>
+
+
+
+
+                                <!-- Assign modal -->
+                                <template if:true={showAssignAssignModal}>
+                                    <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+                                        <div class="slds-modal__container">
+                                            <header class="slds-modal__header">
+                                                <h2 class="slds-text-heading_medium">Assign Record</h2>
+                                            </header>
+                                            <div class="slds-modal__content slds-p-around_medium">
+                                                <lightning-combobox
+                                                    name="assignee"
+                                                    label="Please select the user to assign"
+                                                    placeholder="Select a user"
+                                                    options={teamUsers}
+                                                    required
+                                                    value={selectedAssignee}
+                                                    onchange={handleAssigneeChange}>
+                                                </lightning-combobox>
+                                            </div>
+                                            <footer class="slds-modal__footer">
+                                                <lightning-button variant="neutral" label="Cancel" onclick={handleAssignCancel}></lightning-button>
+                                                <lightning-button class="slds-m-left_small" variant="brand" label="Assign" onclick={handleAssignConfirm}></lightning-button>
+                                            </footer>
+                                        </div>
+                                    </section>
+                                    <div class="slds-backdrop slds-backdrop_open"></div>
+                                </template>
+
+                                <!-- Close confirmation modal -->
+                                <template if:true={showConfirmation}>
+                                    <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+                                        <div class="slds-modal__container">
+                                            <header class="slds-modal__header">
+                                                <h2 class="slds-text-heading_medium">Close Ticket</h2>
+                                            </header>
+                                            <div class="slds-modal__content slds-p-around_medium">
+                                                <p>Are you sure you want to close this work item? Please provide closing comments:</p>
+                                                <lightning-textarea 
+                                                    name="closingComments"
+                                                    label="Closing Comments"
+                                                    maxlength="255"
+                                                    required
+                                                    placeholder="Enter closing comments......"
+                                                    value={closingComments}
+                                                    onchange={handleCommentsChange}>
+                                                </lightning-textarea>
+                                            </div>
+                                            <footer class="slds-modal__footer">
+                                                <lightning-button variant="neutral" label="Cancel" onclick={handleCancel}></lightning-button>
+                                                <lightning-button class="slds-m-left_small" variant="brand" label="Close Ticket" onclick={handleConfirm}></lightning-button>
+                                            </footer>
+                                        </div>
+                                    </section>
+                                    <div class="slds-backdrop slds-backdrop_open"></div>
+                                </template>
+
+                            </div>
+                        </div>
+
+                        <!-- Row 2: Details -->
+                        <div class="slds-tile__detail slds-m-top_x-small">
+                            <!-- <template for:each={transformedRecord.fields} for:item="rec">
+                                <template if:true={rec.url}>
+                                    <div key={rec.label} class="detail-row">
+                                        <div class="field-label" title={rec.label}>
+                                            {rec.label}:
+                                        </div>
+                                        <div class="hover-wrapper"
+                                            data-id={rec.id}
+                                            onmouseenter={handleMouseEnter}
+                                            onmouseleave={handleMouseLeave}>
+                                            <a href={rec.url} target="_blank" class="slds-truncate" title={rec.value}>
+                                                <span class="slds-truncate slds-text-title_bold">
+                                                    {rec.value}
+                                                </span>
+                                            </a>
+
+                                            <template if:true={rec.previewVisible}>
+                                                <section class="slds-popover slds-popover_panel slds-nubbin_top-left preview-box" role="dialog" style="position: absolute;">
+                                                    <lightning-record-form 
+                                                    record-id={hoveredRecordId} 
+                                                    object-api-name={hoverObjectApiName} 
+                                                    layout-type="Compact" 
+                                                    mode="readonly" 
+                                                    columns="1">
+                                                    </lightning-record-form>
+                                                </section>
+                                            </template>
+                                        </div>
+                                    </div>
+                                </template>
+                                <template if:false={rec.url}>
+                                    <div key={rec.label} class="detail-row">
+                                        <div class="field-label" title={rec.label}>
+                                            {rec.label}:
+                                        </div>
+                                        <div class="field-value" title={rec.value}>
+                                            {rec.value}
+                                        </div>
+                                    </div>
+                                </template>
+                            </template> -->
+                            <template if:true={_refreshFlag}></template>
+                            <template for:each={processedFields} for:item="rec">
+                                <template if:true={rec.url}>
+                                    <div key={rec.label} class="detail-row">
+                                        <div class="field-label" title={rec.label}>{rec.label}:</div>
+
+                                        <div class="hover-wrapper"
+                                            data-id={rec.id}
+                                            onmouseenter={handleMouseEnter}
+                                            onmouseleave={handleMouseLeave}>
+                                            
+                                            <a href={rec.url} target="_blank" class="slds-truncate" title={rec.value}>
+                                                <span class="slds-truncate slds-text-title_bold">{rec.value}</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </template>
+
+                                <template if:false={rec.url}>
+                                    <div key={rec.label} class="detail-row">
+                                        <div class="field-label" title={rec.label}>{rec.label}:</div>
+                                        <div class="field-value" title={rec.value}>{rec.value}</div>
+                                    </div>
+                                </template>
+                            </template>
+
+                            <!-- 🔹 Popup OUTSIDE the loop -->
+                            <template if:true={showPreview}>
+                                <section class="slds-popover slds-popover_panel slds-nubbin_top-left preview-popup"
+                                    style={popupStyle}
+                                    onmouseenter={keepOpen}
+                                    onmouseleave={closePreview}>
+                                    <lightning-record-form 
+                                        record-id={hoveredRecordId}
+                                        object-api-name={hoverObjectApiName}
+                                        layout-type="Compact"
+                                        mode="readonly"
+                                        columns="1">
+                                    </lightning-record-form>
+                                </section>
+                            </template>
+
+                        </div>
+
+                    </article>
+                </li>
+            </ul>
+        </div>
+    </template>
+</template>

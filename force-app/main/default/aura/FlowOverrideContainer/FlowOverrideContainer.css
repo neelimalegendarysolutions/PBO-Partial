@@ -1,0 +1,6 @@
+.THIS .close-icon {
+    position: absolute;
+    top: -0.25rem;
+    right: -0.25rem;
+    z-index: 10;
+}

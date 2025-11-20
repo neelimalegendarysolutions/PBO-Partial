@@ -1,0 +1,531 @@
+<template>
+    <div class="slds-grid slds-wrap slds-is-relative">
+        <div lwc:if={isLoading}>
+            <lightning-spinner variant="brand" size="large"></lightning-spinner>
+        </div>
+        <div class="slds-col slds-size_3-of-3 slds-m-bottom_x-small" data-id="headerGrid">
+            <!-- <lightning-card variant="narrow"> -->
+            <lightning-layout class="slds-theme_shade" horizontal-align="spread">
+             <!--   
+                <lightning-layout-item size="3" class="slds-m-around_medium">
+                    <div class="slds-grid slds-align-center">
+                        <div class="slds-page-header__col-title">
+                            <div class="slds-media">
+                                <div class="slds-media__figure">
+                                    <lightning-icon icon-name="custom:custom57" variant="success" alternative-text="Project" title="Project"></lightning-icon>
+                                    
+                                </div>
+                                <div class="slds-media__body title-heading">
+                                    <div class="slds-page-header__name ">
+                                        <div class="slds-page-header__name-title flex">
+                                            <span class="slds-text-title">Project KANBAN</span><br/>
+                                            <h3>
+                                                <span class="slds-page-header__title slds-truncate" style="font-size: 15px;" title={projectName}><a data-id={projectId} onclick={navigateProjectHandler}>{projectName}</a></span>
+
+                                            </h3>
+
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </lightning-layout-item>
+                -->
+                <!--updated on 05/09-->
+                <!-- Case: On Project Record Page -->
+                <template if:true={isOnProjectRecordPage}>
+                    <lightning-layout-item size="3" class="slds-m-around_medium">
+                        <div class="slds-grid slds-align-center">
+                            <div class="slds-page-header__col-title">
+                                <div class="slds-media">
+                                    <div class="slds-media__figure">
+                                        <lightning-icon icon-name="utility:record_collection" variant="success" size="small" style="margin-top: -0.5rem;" alternative-text={relatedListTitle} title={relatedListTitle}></lightning-icon>
+                                    </div>
+                                    <div class="slds-media__body">
+                                        <h2 class="slds-card__header-title">
+                                            <a href="javascript:void(0);" class="slds-card__header-link slds-truncate"
+                                            title={relatedListTitle}>
+                                                <span>{relatedListTitle}</span>
+                                            </a>
+                                        </h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </lightning-layout-item>
+                </template>
+
+                <!-- Case: NOT on Project Record Page (Map App etc.) -->
+                <template if:false={isOnProjectRecordPage}>
+                    <lightning-layout-item size="3" class="slds-m-around_medium">
+                        <div class="slds-grid slds-align-center">
+                            <div class="slds-page-header__col-title">
+                                <div class="slds-media">
+                                    <div class="slds-media__figure">
+                                        <lightning-icon icon-name="custom:custom57" alternative-text="Project" title="Project"></lightning-icon>
+                                    </div>
+                                    <div class="slds-media__body title-heading">
+                                        <div class="slds-page-header__name">
+                                            <div class="slds-page-header__name-title flex">
+                                                <span class="slds-text-title">Project KANBAN</span><br/>
+                                                <h3>
+                                                    <span class="slds-page-header__title slds-truncate" style="font-size: 15px;" title={projectName}>
+                                                        <a data-id={projectId} onclick={navigateProjectHandler}>{projectName}</a>
+                                                    </span>
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </lightning-layout-item>
+                </template>
+
+                <!--updated on 05/09-->
+                <lightning-layout-item>
+                    <div class="slds-grid slds-align-center slds-m-top_medium">
+                        <template if:false={isOnProjectRecordPage}>
+
+                            <!-- Project picker -->
+                            <div class="record-picker-wrapper slds-m-right_x-small slds-m-top_xx-small">
+                                <lightning-record-picker 
+                                    label="Projects" 
+                                    variant="label-hidden"
+                                    placeholder="Search Projects..." 
+                                    object-api-name="Jpeto__Project__c"
+                                    onchange={handleRecordChange} 
+                                    value={projectId} 
+                                    disabled={isSearchBoxDisabled}>
+                                </lightning-record-picker>
+                            </div>
+
+                            <span class="slds-m-right_x-small slds-m-top_xx-small">
+                                <div class="slds-button-group" role="group">
+                                    <lightning-button-icon
+                                        icon-name="utility:refresh"
+                                        alternative-text="Refresh"
+                                        title="Refresh"
+                                        variant="border-filled"
+                                        onclick={handleProjectWorkItemRefresh}>
+                                    </lightning-button-icon>
+                                </div>
+                            </span>
+
+                            <span class="slds-m-right_x-small slds-m-top_xx-small">
+                                <div class="slds-button-group" role="group">
+                                    <lightning-button-icon
+                                        icon-name="utility:filterList"
+                                        alternative-text="Filter"
+                                        title="Filter"
+                                        variant="border-filled"
+                                        onclick={handleFilterList}>
+                                    </lightning-button-icon>
+                                    <!-- <lightning-icon icon-name='utility:filterList' alternative-text='filterList' size='x-small' title='filterList'></lightning-icon> -->
+                                </div>
+                            </span>
+                            
+                        </template>
+                       
+
+                        <!-- Show search filters only when a record is selected -->
+                        <template if:true={isOnProjectRecordPage}>
+                        <!-- <template if:true={isRecordSelected}> -->
+                            <div class="slds-grid slds-grid_vertical-align-center">
+
+                                <!-- Search In Combobox -->
+                                <div class="slds-m-right_x-small">
+                                    <lightning-combobox 
+                                        class="wide-combobox" 
+                                        name="search" 
+                                        label="Search In"
+                                        variant="label-hidden"
+                                        value={selectedSearchPicklistValue} 
+                                        placeholder="All"
+                                        options={searchOptions} 
+                                        onchange={handleSearchPicklistChange}>
+                                    </lightning-combobox>
+                                </div>
+
+                                <!-- Search Text Input -->
+                                <div class="slds-m-right_x-small textsearch-margin">
+                                    <lightning-input 
+                                        type="text" 
+                                        label="Enter Text To Search"
+                                        variant="label-hidden"
+                                        placeholder="Enter Text To Search"
+                                        value={searchTerm}
+                                        data-id="searchInput"
+                                        onchange={handleSearchChange}
+                                        required>
+                                    </lightning-input>
+                                </div>
+
+                                <span class="slds-m-right_x-small">
+                                    <div class="slds-button-group" role="group">
+                                        <lightning-button-icon
+                                            icon-name="utility:refresh"
+                                            alternative-text="Refresh"
+                                            title="Refresh"
+                                            variant="border-filled"
+                                            onclick={handleProjectWorkItemRefresh}>
+                                        </lightning-button-icon>
+                                    </div>
+                                </span>
+
+                                <!-- Filter Menu -->
+                                <div class="slds-m-left_xx-small dropdown-margin"> <!-- smaller margin -->
+                                    <lightning-button-menu 
+                                        alternative-text="Filter Work Items"
+                                        icon-name="utility:down"
+                                        menu-alignment="auto"
+                                        onselect={handleRadioChange}>
+                                        <lightning-menu-item 
+                                            value="All" 
+                                            label="All Work Items">
+                                        </lightning-menu-item>
+                                        <lightning-menu-item 
+                                            value="My" 
+                                            label="My Work Items">
+                                        </lightning-menu-item>
+                                    </lightning-button-menu>
+                                </div>
+
+                            </div>
+                        <!-- </template> -->
+                        </template>
+                    </div>
+                </lightning-layout-item>
+            </lightning-layout>
+
+
+            <template if:false={isOnProjectRecordPage}>
+                <lightning-layout multiple-rows="false" class="slds-theme_default">
+                    <lightning-layout-item flexibility="auto" padding="horizontal-small">
+                        <lightning-layout horizontal-align="spread" multiple-rows="false">
+                            <lightning-layout-item flexibility="auto" size="12">
+                                <template if:true={projectId}>
+                                    <template if:true={chunkedFields}>
+                                        <div class="slds-m-around_medium">
+                                            <template for:each={chunkedFields} for:item="row">
+                                                <div key={row.rowId} class="slds-grid slds-wrap">
+                                                    <template for:each={row.fields} for:item="field">
+                                                        <!--<div key={field.label}
+                                                            class="slds-col slds-size_1-of-6 slds-p-right_medium">-->
+                                                            <div key={field.label}
+                                                            class="slds-col 
+                                                                   slds-small-size_1-of-1 
+                                                                   slds-medium-size_1-of-1 
+                                                                   slds-large-size_1-of-6  slds-p-right_medium">
+                                                            <div class="slds-form-element">
+                                                                <span class="slds-form-element__label">{field.label}</span>
+                                                                <template if:true={field.id}>
+                                                                    <div class="slds-form-element__control">
+                                                                        <a data-id={field.id}
+                                                                            onclick={navigateProjectHandler}>{field.value}</a>
+                                                                    </div>
+                                                                </template>
+                                                                <template if:false={field.id}>
+                                                                    <div class="slds-form-element__control">
+                                                                        <span class="slds-form-element__static">{field.value}</span>
+                                                                    </div>
+                                                                </template>
+                                                            </div>
+                                                        </div>
+                                                    </template>
+                                                </div>
+                                            </template>
+                                        </div>
+                                    </template>
+                                </template>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </template>
+
+
+        </div>
+        <!-- <template if:true={canShowFilters}>
+            <lightning-layout-item class="slds-size_1-of-1 slds-large-size_3-of-12">
+                <lightning-card title="Filters" class="full-width-card slds-border_bottom slds-p-bottom_x-small">
+                    <div slot="actions">
+                        <lightning-button-icon
+                            icon-name="utility:close"
+                            alternative-text="Close Filters"
+                            title="Close Filters"
+                            variant="bare"
+                            size="medium"
+                            onclick={handleFilterList}>
+                        </lightning-button-icon>
+                    </div>
+                    <div class="slds-border_bottom slds-p-bottom_x-small"></div>
+                    <div class="slds-p-around_medium slds-m-top_xxx-small">
+                        <div class="slds-m-bottom_large">
+                            <lightning-combobox
+                                name="search"
+                                label="Search In"
+                                class="wide-combobox"
+                                value={selectedSearchPicklistValue}
+                                placeholder="Select Field"
+                                options={searchOptions}
+                                onchange={handleSearchPicklistChange}>
+                            </lightning-combobox>
+                        </div>
+
+                        <div class="slds-m-bottom_medium">
+                            <lightning-input
+                                type="text"
+                                label="Enter Text To Search"
+                                value={searchTerm}
+                                onchange={handleSearchChange}>
+                            </lightning-input>
+                        </div>
+
+                        <div class="slds-m-bottom_small">
+                            <lightning-input
+                                type="radio"
+                                name="workItem"
+                                label="All Work Items"
+                                value="All"
+                                checked ={checkedAllRadioFilter}
+                                onchange={handleRadioChange}>
+                            </lightning-input>
+                        </div>
+
+                        <div>
+                            <lightning-input
+                                type="radio"
+                                name="workItem"
+                                label="My Work Items"
+                                value="My"
+                                checked={checkedMyRadioFilter}
+                                onchange={handleRadioChange}>
+                            </lightning-input>
+                        </div>
+
+                
+                    </div>
+                    <div class="slds-border_top slds-p-top_medium slds-p-bottom_medium slds-theme_shade">
+                        <div class="slds-theme_shade slds-grid slds-grid_align-end">
+                            <footer class="slds-align_absolute-center">
+                                <lightning-button
+                                    variant="neutral"
+                                    label="Clear"
+                                    onclick={handleFilterClear}>
+                                </lightning-button>
+
+                                <lightning-button
+                                    class="slds-m-left_small"
+                                    variant="brand"
+                                    label="Save"
+                                    onclick={handleFilterSave}>
+                                </lightning-button>
+                            </footer>
+                        </div>
+                    </div>
+                </lightning-card>
+            </lightning-layout-item>
+        </template> -->
+        <div class={containerClass} style="display: block;width: 100%;">
+            <c-sprint-path project-id={projectId} sprint-id={sprintId} current-user-id={currentUserId} path-type="path"
+                onpathchange={handlePathChange}></c-sprint-path>
+        </div>
+    </div>
+    
+      <template if:true={isLoadingWorkItem}>
+        <div class="spinner-overlay">
+            <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+        </div>
+       </template> 
+
+    <template if:true={displayWorkItemStageSection}>
+
+        <!-- Record Type Tabs (Static with Horizontal Scroll) -->
+        <div class="tabs-container">
+            <div class="slds-tabs_default card_wrapper">
+                <ul class="slds-tabs_default__nav" role="tablist">
+                    <template for:each={tabs} for:item="recordType" for:index="index">
+                        <li 
+                            key={recordType.recordTypeId}
+                            class={recordType.className}
+                            title={recordType.name}
+                            role="presentation">
+                            <a 
+                                class="slds-tabs_default__link"
+                                href="javascript:void(0);"
+                                role="tab"
+                                tabindex={recordType.tabIndex}
+                                aria-selected={recordType.isActive}
+                                aria-controls={recordType.ariaControls}
+                                id={recordType.tabId}
+                                data-id={recordType.recordTypeId}
+                                onclick={handleTabClick}>
+                                {recordType.name}
+                            </a>
+                        </li>
+                    </template>
+                </ul>
+            </div>
+        </div>
+            <!-- Spinner Overlay -->
+        <div class="board-container slds-box slds-theme_default">
+            <lightning-layout class="slds-m-bottom_medium" multiple-rows="false" style="flex-wrap: nowrap;">
+                
+                <lightning-layout-item class={boardLayoutClass}>
+                <div class="scroll-container">
+                <template for:each={workItemStagePickVals} for:item="item">
+                    <template if:true={item.count}>
+                        <lightning-layout-item key={item.stage} flexibility="no-flex" class="stageContainer"
+                            style={calcWidth}>
+                            <!-- <h1 class="column_heading">{item.title}</h1> -->
+                             <!-- Column Header with Sort Toggle -->
+                            <!-- <h1 class="column_heading" onclick={handleSort} data-field={item.fieldName}>
+                                {item.title}
+                                <span class="slds-m-left_small">SortBy</span>
+                                <lightning-combobox
+                                    name="sortOptions"
+                                    label="Sort By"
+                                    value={selectedSortField}
+                                    placeholder="Select a field"
+                                    options={sortOptions}
+                                    onchange={handleSortChange}
+                                    variant="label-hidden">
+                                </lightning-combobox>
+                                <lightning-icon 
+                                    icon-name={item.sortIcon} 
+                                    size="x-small" 
+                                    class="sort-icon">
+                                </lightning-icon>
+                            </h1> -->
+                            <div class="slds-grid slds-grid_vertical-align-center column_heading" onclick={handleSort} data-stage={item.stage}>
+                            <!-- Stage Title -->
+                            <span class="slds-truncate" title={item.title}>{item.title}</span>
+
+                            
+
+                            <!-- Combobox -->
+                            <!-- <div class="slds-m-left_xx-small combobox-wrapper">
+                                <div class="slds-select_container slds-m-left_x-small truncated-combobox" title={selectedSortField}>
+                                    <lightning-combobox
+                                        name="sortOptions"
+                                        value={selectedSortField}
+                                        placeholder="Select Field"
+                                        options={sortOptions}
+                                        onchange={handleSortChange}
+                                        variant="label-hidden">
+                                    </lightning-combobox>
+                                </div>
+                            </div> -->
+
+                            
+                        </div>
+
+                            <c-drag-and-drop-list records={workItemRecords} stage={item.stage} sprint-id={sprintId} all-pick-values={pickVals} team-users = {projectTeamUsers}
+                                onlistitemdrag={handleListItemDrag} enable-action-menu={enableActionMenu} onitemdrop={handleItemDrop} onclose={handleWorkItemClose} onmovetostage={handleMoveToStage}
+                                onassign={handleAssign} onloghours={handleLogHours} key={listKey}
+                                is-community={isCommunity} custom-redirect-link={communityNavigationURL}>
+                            </c-drag-and-drop-list>
+                            
+                                          
+
+                        </lightning-layout-item>
+                    </template>
+
+                    <template if:false={item.count}>
+                        <lightning-layout-item key={item.stage} flexibility="no-flex" class="stageContainer">
+                            <h1 class="column_heading2" title={item.title}>{item.title}</h1>
+                            <c-drag-and-drop-list records={workItemRecords} stage={item.stage} sprint-id={sprintId} enable-action-menu={enableActionMenu} team-users = {projectTeamUsers}
+                                onlistitemdrag={handleListItemDrag} onitemdrop={handleItemDrop} onclose={handleWorkItemClose} onmovetostage={handleMoveToStage} onassign={handleAssign}
+                                is-community={isCommunity} custom-redirect-link={communityNavigationURL}>
+                            </c-drag-and-drop-list>
+              
+                        </lightning-layout-item>
+                    </template>                   
+                </template>
+                </div>
+                </lightning-layout-item>
+
+                <template if:true={canShowFilters}>
+                    <div class="filters-panel visible">
+                        <lightning-card title="Filters" class="full-width-card">
+                            <div slot="actions">
+                                <lightning-button-icon
+                                    icon-name="utility:close"
+                                    alternative-text="Close Filters"
+                                    title="Close Filters"
+                                    variant="bare"
+                                    onclick={handleFilterList}>
+                                </lightning-button-icon>
+                            </div>
+
+                            <div class="slds-border_bottom slds-p-bottom_x-small"></div>
+
+                            <div class="slds-p-around_medium">
+                                <lightning-combobox
+                                    name="search"
+                                    label="Search In"
+                                    value={selectedSearchPicklistValue}
+                                    options={searchOptions}
+                                    onchange={handleSearchPicklistChange}>
+                                </lightning-combobox>
+
+                                <lightning-input
+                                    class="slds-m-top_medium"
+                                    type="text"
+                                    label="Enter Text To Search"
+                                    value={searchTerm}
+                                    data-id="searchInput"
+                                    onchange={handleSearchChange}
+                                    required>
+                                </lightning-input>
+
+                                <div class="slds-m-top_medium">
+                                    <lightning-input
+                                        type="radio"
+                                        name="workItem"
+                                        label="All Work Items"
+                                        value="All"
+                                        checked={checkedAllRadioFilter}
+                                        onchange={handleRadioChange}>
+                                    </lightning-input>
+
+                                    <lightning-input
+                                        type="radio"
+                                        name="workItem"
+                                        label="My Work Items"
+                                        value="My"
+                                        checked={checkedMyRadioFilter}
+                                        onchange={handleRadioChange}>
+                                    </lightning-input>
+                                </div>
+                            </div>
+
+                            <footer class="slds-p-around_medium slds-border_top">
+                                <lightning-button
+                                    variant="neutral"
+                                    label="Clear"
+                                    onclick={handleFilterClear}>
+                                </lightning-button>
+
+                                <lightning-button
+                                    class="slds-m-left_small"
+                                    variant="brand"
+                                    label="Save"
+                                    onclick={handleFilterSave}>
+                                </lightning-button>
+                            </footer>
+                        </lightning-card>
+                    </div>
+                </template>
+
+
+
+            </lightning-layout>
+        </div>
+    </template>
+</template>

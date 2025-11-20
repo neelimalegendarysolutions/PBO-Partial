@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <environments>Default</environments>
+    <formulas>
+        <name>CalculatedHours</name>
+        <dataType>Number</dataType>
+        <expression>{!$Record.BIllable_Hours__c} + {!$Record.Non_Billable_Hours__c} + {!$Record.Sick_Leave_Hours__c} +{!$Record.Vacation_Hours__c}</expression>
+        <scale>2</scale>
+    </formulas>
+    <interviewLabel>Hour Sync (TEMPORARY) {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Hour Sync (TEMPORARY)</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>temporary flow to bypass null error on packaged Hours field</description>
+        <name>Sync_Hours</name>
+        <label>Sync Hours</label>
+        <locationX>176</locationX>
+        <locationY>287</locationY>
+        <inputAssignments>
+            <field>Jpetto__Hours__c</field>
+            <value>
+                <elementReference>CalculatedHours</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Sync_Hours</targetReference>
+        </connector>
+        <object>Jpetto__Timesheet_Entry__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>allowChanges</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>linkedToDesignKit</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>marginBottom</name>
+                    <value>0</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>marginLeft</name>
+                    <value>0</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>marginRight</name>
+                    <value>0</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>marginTop</name>
+                    <value>0</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>richTextValue</name>
+                    <value>&lt;p&gt;Hello {{User.Name}},&lt;/p&gt;
+
+&lt;p&gt;Case &lt;b&gt;{{Case.CaseNumber}}&lt;/b&gt; has not received a response for 12 hours and has been escalated to you.&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;Case Details:&lt;/b&gt;&lt;br /&gt;
+&amp;bull; Subject: {{Case.Subject}}&lt;br /&gt;
+&amp;bull; Priority: {{Case.Priority}}&lt;br /&gt;
+&amp;bull; Status: {{Case.Status}}&lt;br /&gt;
+&amp;bull; Customer: {{Case.Contact.Name}}&lt;br /&gt;
+&amp;bull; Created: {{Case.CreatedDate}}&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;{{Case.Link}}&quot;&gt;View Case in Salesforce&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Thanks,&lt;br /&gt;
+Salesforce Case Management System&lt;/p&gt;</value>
+                </componentInstanceProperties>
+                <componentName>contentbuilder:richText</componentName>
+                <identifier>contentbuilder_richText</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-b7264ed2-c45d-4ada-9b95-1119ca6b0637</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>columnBody</name>
+                    <value>Facet-b7264ed2-c45d-4ada-9b95-1119ca6b0637</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>columnCount</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>columnIndex</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>columnSpacer</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>padding</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>verticalAlign</name>
+                    <value>top</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>width</name>
+                    <value>100%</value>
+                </componentInstanceProperties>
+                <componentName>contentbuilder:column</componentName>
+                <identifier>contentbuilder_column</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-abe35ab2-f7ee-4bf8-9ddd-5418c4373d1f</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>backgroundColor</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>columns</name>
+                    <value>Facet-abe35ab2-f7ee-4bf8-9ddd-5418c4373d1f</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>verticalAlignment</name>
+                    <value>top</value>
+                </componentInstanceProperties>
+                <componentName>contentbuilder:row</componentName>
+                <identifier>contentbuilder_row</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>main</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <masterLabel>Case_Escalation_12Hr</masterLabel>
+    <template>
+        <name>contentpage:defaultEmailTemplatePageTemplate</name>
+        <properties>
+            <name>backgroundColor</name>
+            <value>#E9EAEC</value>
+        </properties>
+        <properties>
+            <name>backgroundImageUrl</name>
+        </properties>
+        <properties>
+            <name>bodyColor</name>
+            <value>#FFFFFF</value>
+        </properties>
+        <properties>
+            <name>paddingBottom</name>
+            <value>10</value>
+        </properties>
+        <properties>
+            <name>paddingLeft</name>
+            <value>10</value>
+        </properties>
+        <properties>
+            <name>paddingRight</name>
+            <value>10</value>
+        </properties>
+        <properties>
+            <name>paddingTop</name>
+            <value>10</value>
+        </properties>
+        <properties>
+            <name>preheader</name>
+        </properties>
+    </template>
+    <type>EmailTemplatePage</type>
+</FlexiPage>

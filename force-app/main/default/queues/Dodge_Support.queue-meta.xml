@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This Queue has members who can assist with Cases from Dodge Project</description>
+    <doesSendEmailToMembers>true</doesSendEmailToMembers>
+    <name>Dodge Support</name>
+    <queueMembers>
+        <users>
+            <user>neelima@legendarysolutions.io.pbopartial</user>
+        </users>
+    </queueMembers>
+    <queueRoutingConfig>Email_Case_Routing</queueRoutingConfig>
+    <queueSobject>
+        <sobjectType>Case</sobjectType>
+    </queueSobject>
+</Queue>

@@ -1,0 +1,43 @@
+<template>
+    <lightning-card variant="Narrow" style={sprintSection}>
+        <template if:true={messageLabel}>
+            <span class="slds-text-heading_medium slds-align_absolute-center">{messageLabel}</span>
+        </template>
+        <template if:true={displaySprintSection}>
+            <lightning-spinner alternative-text="Loading" size="small" if:true={isLoading}></lightning-spinner>
+            <p slot="actions" if:true={isTop}>
+                <lightning-button if:true={showButton} variant="brand" label={buttonLabel} title={buttonLabel}
+                    onclick={handleClick}></lightning-button>
+            </p>
+            <div class="slds-m-around_small slds-p-bottom_small">
+
+                <lightning-progress-indicator current-step={currentValue} type={pathType} variant="base">
+
+                    <template for:each={enhancedPathValues} for:item="step" for:index="index">
+
+                        <div key={step.value} style="display: flex; align-items: center; position: relative; flex: 1;">
+
+
+                            <template if:true={step.hasNeglectedItems}>
+
+                                <lightning-progress-step class=" slds-is-lost " label={step.labelWithCount}
+                                    value={step.value} data-index={index} data-value={step.value}
+                                    onclick={handleSelectChange}>
+                                </lightning-progress-step>
+                            </template>
+                            <template if:false={step.hasNeglectedItems}>
+                                <lightning-progress-step class=" slds-is-complete" label={step.labelWithCount}
+                                    value={step.value} data-index={index} data-value={step.value}
+                                    onclick={handleSelectChange}>
+                                </lightning-progress-step>
+                            </template>
+
+                        </div>
+                    </template>
+                </lightning-progress-indicator>
+
+
+            </div>
+        </template>
+    </lightning-card>
+</template>

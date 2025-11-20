@@ -1,0 +1,40 @@
+<template>
+    <div class="responsive-container">
+        <ul class="slds-has-dividers_around-space dropZone"
+            ondrop={handleDrop}
+            ondragover={handleDragOver}
+            ondragenter={handleDragEnter}
+            ondragleave={handleDragLeave}
+            style="height:70vh; overflow-y:auto;">
+
+            <template for:each={records} for:item="recordItem">
+                <li key={recordItem.Id}
+                    class="drop-item"
+                    data-id={recordItem.Id}
+                    ondragover={handleItemDragOver}
+                    ondragleave={handleItemDragLeave}
+                    ondrop={handleItemDrop}>
+
+                    <c-drag-and-drop-card 
+                        stage={stage}
+                        record={recordItem}
+                        sprint-id={sprintId}
+                        key={recordItem.Id}
+                        data-id={recordItem.Id}
+                        all-pick-values={allPickValues}
+                        team-users={teamUsers}
+                        enable-action-menu={enableActionMenu}
+                        onitemdrag={handleItemDrag}
+                        ondragend={handleDragEnd}
+                        oncloseaction={handleCloseAction}
+                        onmovetostage={handleMoveToStage}
+                        onassign={handleAssign}
+                        is-community={isCommunity}
+                        custom-redirect-link={customRedirectLink}
+                        >
+                    </c-drag-and-drop-card>
+                </li>
+            </template>
+        </ul>
+    </div>
+</template>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Used for Email-to-Case Case routing based on email domain</description>
+    <label>Email Domain Queue Mapping</label>
+    <pluralLabel>Email Domain Queue Mappings</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

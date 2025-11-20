@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>true</doesSendEmailToMembers>
+    <email>support@legendarysolutions.io</email>
+    <name>Dev Team (Full Stack)</name>
+    <queueMembers>
+        <users>
+            <user>adil@legendarysolutions.pbo</user>
+            <user>dhanpal@legendarysolutions.pbo</user>
+            <user>sandeep@legendarysolutions.pbo</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Task</sobjectType>
+    </queueSobject>
+</Queue>

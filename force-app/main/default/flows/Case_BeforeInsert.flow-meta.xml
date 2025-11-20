@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>Assign to Sophus Project Team Member</description>
+        <name>Case_Owner_Assignment</name>
+        <label>Case Owner Assignment</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.OwnerId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Sophus_Support_Queue_by_Name.Id</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <decisions>
+        <description>Check the Email Domain of the case and Route accordingly</description>
+        <name>Check_Email_Domain</name>
+        <label>Check Email Domain</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Sophus_Consulting</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>EmailDomain</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>sophusconsulting.com</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Sophus_Support_Queue_by_Name</targetReference>
+            </connector>
+            <label>Sophus Consulting</label>
+        </rules>
+        <rules>
+            <name>Legendary_Solutions</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>EmailDomain</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>legendarysolutions.io</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Legendary Solutions</label>
+        </rules>
+        <rules>
+            <name>Recon</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>EmailDomain</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>recon.com</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Recon</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <description>Extract Email Domain from the Case Web Email field</description>
+        <name>EmailDomain</name>
+        <dataType>String</dataType>
+        <expression>RIGHT(
+{!$Record.SuppliedEmail}, 
+LEN({!$Record.SuppliedEmail})  - FIND(&apos;@&apos;, {!$Record.SuppliedEmail})
+)</expression>
+    </formulas>
+    <interviewLabel>Case BeforeInsert {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Case BeforeInsert</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Get the Queue record for Sophus Support by Name</description>
+        <name>Get_Sophus_Support_Queue_by_Name</name>
+        <label>Get Sophus Support Queue by Name</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Case_Owner_Assignment</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Type</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Queue</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Sophus_Support</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Group</object>
+        <queriedFields>Id</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_Email_Domain</targetReference>
+        </connector>
+        <object>Case</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

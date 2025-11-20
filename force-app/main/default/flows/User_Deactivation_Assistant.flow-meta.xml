@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Update relevant records when a user is deactivated</description>
+    <environments>Default</environments>
+    <interviewLabel>User Deactivation Assistant {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>User Deactivation Assistant</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Deactivate_user_on_all_project_teams</name>
+        <label>Deactivate user on all project teams</label>
+        <locationX>308</locationX>
+        <locationY>276</locationY>
+        <connector>
+            <targetReference>Reassign_Work_Items</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Jpetto__Active__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.Jpetto__Project_Team_Members__r</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Reassign_Work_Items</name>
+        <label>Reassign Work Items</label>
+        <locationX>308</locationX>
+        <locationY>384</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Jpetto__Status__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Closed</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Jpetto__Assigned_User__c</field>
+            <value>
+                <elementReference>$User.ManagerId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.Jpetto__Work_Items__r</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>IsActive</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>User</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <scheduledPaths>
+            <name>Updating_PTM_WIs</name>
+            <connector>
+                <targetReference>Deactivate_user_on_all_project_teams</targetReference>
+            </connector>
+            <label>Updating PTM &amp; WIs</label>
+            <offsetNumber>0</offsetNumber>
+            <offsetUnit>Hours</offsetUnit>
+            <timeSource>RecordTriggerEvent</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

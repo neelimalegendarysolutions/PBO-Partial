@@ -1,0 +1,129 @@
+.slds-item { border:1px solid #d8dde6; border-radius:.25rem; padding:.35rem; margin:.15rem; cursor:grab; transition:all .2s; }
+.slds-item:hover { background-color: #e6f0fa; box-shadow:0 2px 6px rgba(0,0,0,.1); }
+.slds-item.dragging { cursor:grabbing !important; }
+.yellow-bg { border:2px solid #f5d76e; box-shadow:-2px 10px 0 rgba(0,0,0,.15); }
+.detail-row { display:flex; align-items:flex-start; margin-bottom:.1rem; }
+.field-label { width:120px; font-weight:bold; flex-shrink:0; white-space:normal; margin-right:-1.5rem; }
+.field-value {
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* allows up to 2 lines of text */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal; /* allows wrapping */
+    line-height: 1.2;
+    max-height: 2.4em; /* prevents overflow vertically */
+    word-break: break-word; /* breaks long unbroken text gracefully */
+    margin-top: .2rem;
+}
+.action-menu { flex-shrink:0; }
+.menu-wrapper { position:relative; display:inline-block; }
+.menu { position:absolute; right:0; top:100%; background:#fff; border:1px solid #ddd; border-radius:.25rem; box-shadow:0 2px 6px rgba(0,0,0,.2); list-style:none; padding:4px 0; margin:4px 0 0 0; z-index:1000; min-width:150px; }
+.menu-item { padding:8px 12px; cursor:pointer; white-space:nowrap; }
+.menu-item:hover { background:#f3f3f3; }
+.has-submenu { position:relative; }
+.portal-submenu { list-style:none; margin:0; padding:4px 0; background:#fff; border:1px solid #ddd; border-radius:.25rem; box-shadow:0 2px 6px rgba(0,0,0,.2); min-width:150px; }
+.portal-submenu li { padding:8px 12px; cursor:pointer; white-space:nowrap; }
+.portal-submenu li:hover { background:#f3f3f3; }
+.hover-card {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 10;
+    min-width: 200px;
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.submenu-container {
+    position: absolute;
+    top: 0;
+    left: 100%; /* makes it appear as a submenu to the right */
+    margin-left: 0.5rem;
+    z-index: 999;
+}
+
+.preview-box {
+    width: 250px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    border-radius: 0.5rem;
+    background: #fff;
+    transition: opacity 0.15s ease-in-out;
+}
+
+.slds-popover_panel {
+    min-height: auto;
+    padding: 0.5rem;
+}
+/*.preview-popup {
+    width: 320px;
+    background: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+}*/
+.preview-popup {
+    width: 340px;
+    max-height: 320px; /* 👈 limit total height */
+    overflow-y: auto;  /* 👈 internal scrollbar if too long */
+    background: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    z-index: 9999;
+    scrollbar-width: thin; /* for Firefox */
+}
+
+/* 👇 scrollbar styling for Chrome/Edge */
+.preview-popup::-webkit-scrollbar {
+    width: 6px;
+}
+.preview-popup::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+}
+
+.hover-wrapper {
+    display: block;
+    max-width: 100%;
+    overflow: visible; /* allows wrapping */
+    white-space: normal; /* let text go to next line */
+    word-break: break-word; /* breaks long names nicely */
+}
+
+.hover-wrapper a {
+    display: inline; /* inline text behavior */
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip; /* disable truncation */
+}
+
+.hover-wrapper a:hover {
+    text-decoration: underline;
+}
+
+.slds-modal__content {
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.modal-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+
+.modal-scroll::-webkit-scrollbar-thumb {
+    background-color: #c8c8c8;
+    border-radius: 3px;
+}
+.slds-section__title {
+    border-bottom: 1px solid #d8dde6;
+    background-color: #f3f2f2;
+    font-weight: bold;
+}
+
+.slds-modal__container {
+    max-width: 900px;
+    width: 70%;
+}

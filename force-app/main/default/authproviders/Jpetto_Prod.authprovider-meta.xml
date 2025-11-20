@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AuthProvider xmlns="http://soap.sforce.com/2006/04/metadata">
+    <authorizeUrl>https://legendarysolutions-pbo--partial.sandbox.my.salesforce.com/services/oauth2/authorize</authorizeUrl>
+    <consumerKey>3MVG9LY8n98IRTt0gg6jlzFwmVeDlZeYdyqR80jPUmVdAFie3nPMrE4eRO3R_gjrBnJvFupRvvniBsE.M0SNN</consumerKey>
+    <consumerSecret>Placeholder_Value</consumerSecret>
+    <friendlyName>Jpetto_Prod</friendlyName>
+    <includeOrgIdInIdentifier>true</includeOrgIdInIdentifier>
+    <isPkceEnabled>true</isPkceEnabled>
+    <providerType>Salesforce</providerType>
+    <requireMfa>false</requireMfa>
+    <sendAccessTokenInHeader>false</sendAccessTokenInHeader>
+    <sendClientCredentialsInHeader>false</sendClientCredentialsInHeader>
+    <sendSecretInApis>true</sendSecretInApis>
+    <tokenUrl>https://legendarysolutions-pbo--partial.sandbox.my.salesforce.com/services/oauth2/token</tokenUrl>
+</AuthProvider>

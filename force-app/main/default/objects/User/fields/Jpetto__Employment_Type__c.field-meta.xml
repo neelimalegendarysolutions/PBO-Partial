@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Jpetto__Employment_Type__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Employment Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Full Time</fullName>
+                <default>false</default>
+                <label>Full Time</label>
+            </value>
+            <value>
+                <fullName>Part-Time</fullName>
+                <default>false</default>
+                <label>Part-Time</label>
+            </value>
+            <value>
+                <fullName>Probation</fullName>
+                <default>false</default>
+                <label>Probation</label>
+            </value>
+            <value>
+                <fullName>Contract Based</fullName>
+                <default>false</default>
+                <label>Contract Based</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

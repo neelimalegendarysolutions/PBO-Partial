@@ -1,0 +1,134 @@
+<apex:page applyBodyTag="false" controller="RedirectToAppExchange" action="{!redirectHandler}">
+    <apex:slds /> 
+    
+    <!--  ------------------------ START W2L EMBED CODE ------------------------  -->
+
+
+<!--  ----------------------------------------------------------------------  -->
+<!--  NOTE: Please add the following <META> element to your page <HEAD>.      -->
+<!--  If necessary, please modify the charset parameter to specify the        -->
+<!--  character set of your HTML page.                                        -->
+<!--  ----------------------------------------------------------------------  -->
+
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8"/>
+
+
+
+<style>
+    .w2l-form__wrapper {
+        font-family: "Open Sans", sans-serif;
+    }
+
+    .w2l-form__form {
+        text-align: left;
+        font-family: "Open Sans", sans-serif;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .w2l-form .w2l-form__input-wrap {}
+
+    .w2l-form .w2l-form__input-wrap .w2l-form__label {
+        text-align: left;
+        font-family: "Open Sans", sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 15px;
+        display: flex;
+        align-items: center;
+        letter-spacing: 1px;
+        color: #000;
+        text-transform: uppercase;
+        padding-bottom: 5px;
+    }
+
+    .w2l-form .w2l-form__input-wrap .w2l-form__input {
+        text-align: left;
+        font-family: "Open Sans", sans-serif;
+        box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.08);
+        font-size: 16px;
+        padding: 10px;
+        margin-bottom: 12px;
+        background: #ffffff;
+        border: 1px solid #b4b4b4;
+        border-radius: 5px;
+
+    }
+
+    .w2l-form .w2l-form__submit {
+        font-family: "Open Sans", sans-serif !important;
+        background: #000 !important;
+        border-radius: 5px !important;
+        font-size: 15px !important;
+        border: none !important;
+        padding: 15px !important;
+        color: #fff;
+         !important;
+        min-width: 100px !important;
+    }
+
+    .w2l-form .w2l-form__submit:hover {
+        background: darker;
+        cursor: pointer;
+    }
+
+    .w2l-form .w2l-form__recaptcha {
+        margin-bottom: 12px;
+    }
+
+    .w2l-form__required {
+        color: rgb(202, 156, 156);
+        padding-left: 5px;
+    }
+</style>
+
+
+<div class="w2l-form--wrapper">
+    <form class="w2l-form" action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
+        <input type="hidden" name="captcha_settings" value="{'keyname':'LCLLC2020','fallback':'true','orgId':'00D3t000004i77i','ts':''}"/>
+        <input type="hidden" name="oid" value="00D3t000004i77i"/>
+        <input type="hidden" name="retURL" value="http://legendaryconsulting.llc/"/>
+
+
+        <div class="w2l-form__input-wrap">
+            <label class="w2l-form__label" for="first_name">First Name <span class="w2l-form__required"> (Required)</span></label>
+            <input class="w2l-form__input" id="first_name" maxlength="80" name="first_name" type="text" required="true" />
+        </div>
+
+        <div class="w2l-form__input-wrap">
+            <label class="w2l-form__label" for="last_name">Last Name <span class="w2l-form__required"> (Required)</span></label>
+            <input class="w2l-form__input" id="last_name" maxlength="80" name="last_name" type="text" required="true" />
+        </div>
+
+        <div class="w2l-form__input-wrap">
+            <label class="w2l-form__label" for="email">Email <span class="w2l-form__required"> (Required)</span></label>
+            <input class="w2l-form__input" id="email" maxlength="80" name="email" type="text" required="true" />
+        </div>
+
+        <div class="w2l-form__input-wrap">
+            <label class="w2l-form__label" for="company">Company </label>
+            <input class="w2l-form__input" id="company" maxlength="80" name="company" type="text" />
+        </div>
+
+        <div class="w2l-form__input-wrap">
+            <label class="w2l-form__label" for="phone">Phone </label>
+            <input class="w2l-form__input" id="phone" maxlength="20" name="phone" type="text" />
+        </div>
+
+        <div class="w2l-form__input-wrap">
+            <label class="w2l-form__label" for="description">Description </label>
+            <textarea class="w2l-form__input" id="description" name="description"></textarea>
+        </div>
+        <div class="g-recaptcha" data-sitekey="6Lfa6BAaAAAAABSIXbJaPYW0GZ0SoGkA9smSDQVG"></div><br/>
+
+        <input type="submit" name="submit" class="w2l-form__submit" value="Submit"></input>
+    </form>
+</div>
+
+<!--- END W2L EMBED CODE --->
+
+
+</apex:page>

@@ -1,0 +1,38 @@
+/**
+ * Created by vinay on 02-09-2025.
+ */
+/* dragAndDrop.css */
+.dropZone {
+    transition: background-color 0.2s ease-in-out;
+    cursor: default; /* normal when not dragging */
+}
+
+.dropZone.drag-over {
+    background-color: #e3fcef; /* light green highlight */
+    border: 2px dashed #2e844a;
+    cursor: grabbing; /* show grabbing when dragging over list */
+}
+
+.drop-item {
+    cursor: grab; /* items inside list also draggable */
+}
+
+.drop-item:active,
+.drop-item.dragging {
+    cursor: grabbing !important;
+}
+
+.insertion-line {
+    height: 4px;
+    background-color: #1589ee;
+    margin: 2px 0;
+    border-radius: 2px;
+}
+
+.drop-line-top {
+    border-top: 3px solid #1589ee;
+}
+
+.drop-line-bottom {
+    border-bottom: 3px solid #1589ee;
+}

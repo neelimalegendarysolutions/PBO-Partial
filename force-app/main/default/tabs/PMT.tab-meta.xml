@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>The ProjectManagementTool is a custom Salesforce component that provides a centralized view and management interface for projects. It allows users to:
+
+- Select a project they are part of from a dropdown menu
+- View a dashboard for the selected project, including sprints and work item boards
+- Customize the work item boards by adding, removing or reordering the different status stages
+- Create new work items directly from the boards
+This component aims to provide a user-friendly experience for managing projects and work items within the Salesforce platform. It is designed to improve visibility, collaboration and productivity for project teams.</description>
+    <label>PMT</label>
+    <lwcComponent>jpettoProjectManagementTool</lwcComponent>
+    <motif>Custom55: Books</motif>
+</CustomTab>

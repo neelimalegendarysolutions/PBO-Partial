@@ -1,0 +1,7 @@
+<apex:page applyBodyTag="false">
+    <apex:slds />
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>Thank you! We will be in touch shortly.</h1>
+  (This is a temporary page, please forgive it's simplicity)
+  <!-- End Default Content REMOVE THIS -->
+</apex:page>

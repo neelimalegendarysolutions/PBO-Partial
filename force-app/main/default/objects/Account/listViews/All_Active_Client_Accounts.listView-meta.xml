@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Active_Client_Accounts</fullName>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>ACCOUNT.LAST_ACTIVITY</columns>
+    <columns>TOTAL_ACTIVITY_7DAYS</columns>
+    <columns>NEXT_ACTIVITY_DATETIME</columns>
+    <columns>Account_Documentation__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Jpetto__Status__c</field>
+        <operation>equals</operation>
+        <value>Active</value>
+    </filters>
+    <filters>
+        <field>ACCOUNT.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Account.Client</value>
+    </filters>
+    <label>All Active Client Accounts</label>
+    <sharedTo>
+        <group>All_Team_Members</group>
+    </sharedTo>
+</ListView>

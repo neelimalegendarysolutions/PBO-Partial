@@ -1,0 +1,266 @@
+.card_wrapper{
+    display: flex;
+    background: #fff;
+    overflow-x: scroll;
+    flex-wrap: nowrap;
+}
+.column_heading{
+    padding: 0.5rem 0.9rem;
+    font-size: 13px;
+    background: #005fb2;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+.column_heading2 {
+    padding: 0.5rem 0.9rem;
+    font-size: 13px;
+    background: #005fb2;
+    color: #fff;
+    margin-bottom: 1rem;
+
+    max-width: 15ch;             /* Limit width to approx. 10 characters */
+    white-space: nowrap;         /* Prevent wrapping */
+    overflow: hidden;            /* Hide overflow text */
+    text-overflow: ellipsis;     /* Add "..." to clipped text */
+}
+.stageContainer{
+    float:left;
+    margin: 0.05rem;
+    border: 1px solid black;
+}
+
+.inline-label-richtext {
+    display: flex;
+}
+.horizontal-radio-group .slds-form-element__control {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* added on 18/06/25*/
+.full-width-card {
+    width: 100%;
+}
+
+.slds-radio-button-group lightning-input {
+    margin-right: 0.5rem;
+}
+
+.spinner-overlay {
+    position: fixed; /* Use fixed to cover the whole screen */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.6); /* Optional dim background */
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/*added on 24/06*/
+
+.scroll-container {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: thin; /* for Firefox */
+}
+
+.scroll-container::-webkit-scrollbar {
+    height: 6px; /* for Chrome/Edge */
+}
+
+.title-heading {
+    margin-top: -0.25rem;
+}
+
+.dropdown-margin {
+    margin-right: 15px;
+    margin-left: -1px;
+}
+
+.textsearch-margin {
+    margin-top: 2px;
+}
+
+.slds-combobox__menu {
+    min-width: 200px !important;
+    white-space: nowrap !important;
+}
+
+.wide-combobox::part(dropdown) {
+    min-width: max-content !important;
+}
+
+.slds-listbox.slds-dropdown {
+    min-width: max-content !important;
+}
+
+/* Make the visible combobox input expand too */
+.wide-combobox .slds-combobox__form-element,
+.wide-combobox lightning-base-combobox,
+.wide-combobox .slds-combobox {
+    width: auto !important;
+    min-width: max-content !important;
+}
+
+.custom-combobox .slds-select {
+    background-color: #fff; /* white background */
+    color: #000; /* black text */
+    font-size: 0.75rem; /* smaller font to fit in column */
+    height: 1.8rem; /* smaller height for tight columns */
+    min-width: 90px; /* optional: adjust to fit column width */
+}
+
+.combobox-wrapper {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* yourLwc.css */
+/* Force visible black text inside combobox input */
+.truncated-combobox .slds-input {
+    color: #000 !important;
+    background-color: #fff !important;
+    max-width: 70px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.slds-select.small-select {
+    background-color: #fff !important;
+    color: #000 !important;
+    font-size: 0.75rem;
+    height: 1.8rem;
+
+    /* Truncate effect */
+    width: 15ch;              /* ~5 characters width */
+    white-space: nowrap;    
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Tabs Container: static horizontal scroll */
+.tabs-container {
+    flex: 0 0 auto;
+    /* only show scrollbars when needed */
+    overflow-x: auto;
+    overflow-y: auto;
+
+    
+    white-space: nowrap;
+    border-bottom: 1px solid #d8dde6;
+    background-color: #f3f6f9; /* optional shade */
+}
+
+/* Force inline tabs to align horizontally */
+.tabset-scroll lightning-tab {
+    display: inline-block;
+}
+
+/* Board Container: independent scroll */
+.board-container {
+    flex: 1 1 auto;
+    overflow-x: auto; /* horizontal scroll for stages */
+    overflow-y: auto; /* vertical scroll if needed */
+    padding: 0.5rem;
+    background: var(--lwc-colorBackgroundAlt, #ffffff);
+}
+
+/* Remove default padding under tabset */
+lightning-tabset {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* Optional: collapse the tab content body */
+lightning-tabset .slds-tabs_default__content,
+lightning-tabset .slds-tabs_scoped__content {
+    display: none !important;
+}
+
+/* Slide-in Filters panel */
+.filters-panel {
+    position: absolute;
+    top: 4rem; /* 👈 adjust this value to start just below the Project picker area */
+    right: 0;
+    width: 350px;
+   
+    background: #ffffff;
+    border-left: 1px solid #d8dde6;
+    z-index: 1000;
+    overflow-y: auto;
+    transition: transform 0.25s ease-in-out;
+    transform: translateX(100%);
+}
+
+/* When filters visible */
+.filters-panel.visible {
+    transform: translateX(0%);
+}
+
+
+/* ============================================= */
+/* Global Floating "New Work Item" Button (UX)   */
+/* ============================================= */
+.new-workitem-fab {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 2rem;
+    z-index: 2000;
+    background-color: #0070d2; /* Salesforce blue */
+    color: #fff;
+    border-radius: 50px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.new-workitem-fab:hover {
+    background-color: #005fb2;
+    transform: translateY(-2px);
+}
+
+.new-workitem-fab lightning-icon {
+    --lwc-colorTextIconDefault: #fff;
+    margin-right: 0.25rem;
+}
+.new-workitem-toolbar {
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    background: #ffffff;
+    border-top: 1px solid #d8dde6;
+    text-align: center;
+    padding: 0.75rem 0;
+    z-index: 1500;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.new-workitem-toolbar lightning-button {
+    display: inline-block;
+    font-weight: 600;
+    min-width: 160px;
+}
+.new-workitem-toolbar lightning-button button {
+    white-space: nowrap !important;   /* Prevent text wrapping */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1.25rem;          /* Adjust padding for balanced look */
+    font-weight: 600;
+}

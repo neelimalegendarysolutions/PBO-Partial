@@ -1,0 +1,800 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>FHT_Free_Trial_Auto_Response</name>
+        <label>FHT Free Trial Auto-Response</label>
+        <locationX>22</locationX>
+        <locationY>726</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>chad@legendarysolutions.io</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipientId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>logEmailOnSend</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailTemplateId</name>
+            <value>
+                <stringValue>00XUa000003e4G5</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <description>FHT Installation Auto-Response Email</description>
+        <name>FHT_Installation_Auto_Response</name>
+        <label>FHT Installation Auto-Response</label>
+        <locationX>343</locationX>
+        <locationY>1116</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>chad@legendarysolutions.io</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipientId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>logEmailOnSend</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailTemplateId</name>
+            <value>
+                <stringValue>00XUa000003fHJJ</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <description>FHT Test Drive Auto-Response Email</description>
+        <name>FHT_Test_Drive_Auto_Response</name>
+        <label>FHT Test Drive Auto-Response</label>
+        <locationX>24</locationX>
+        <locationY>550</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>chad@legendarysolutions.io</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipientId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>logEmailOnSend</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailTemplateId</name>
+            <value>
+                <stringValue>00XUa000003e1bZ</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>JPM_Agentforce_Free_Trial_Auto_Response</name>
+        <label>JPM-Agentforce Free Trial Auto Response</label>
+        <locationX>1647</locationX>
+        <locationY>819</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>chad@legendarysolutions.io</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipientId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>logEmailOnSend</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailTemplateId</name>
+            <value>
+                <stringValue>00XUa000003jguD</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>JPM_Agentforce_Installation_Auto_Response</name>
+        <label>JPM-Agentforce Installation Auto Response</label>
+        <locationX>1648</locationX>
+        <locationY>1043</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>chad@legendarysolutions.io</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipientId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>logEmailOnSend</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailTemplateId</name>
+            <value>
+                <stringValue>00XUa000003jh3x</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>JPM_Agentforce_Test_Drive_Auto_Response</name>
+        <label>JPM-Agentforce Test Drive Auto Response</label>
+        <locationX>1647</locationX>
+        <locationY>574</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>chad@legendarysolutions.io</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipientId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>logEmailOnSend</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailTemplateId</name>
+            <value>
+                <stringValue>00XUa000003jgvp</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <description>JPM Free Trial Auto-Response Email</description>
+        <name>JPM_Free_Trial_Auto_Response</name>
+        <label>JPM Free Trial Auto-Response</label>
+        <locationX>769</locationX>
+        <locationY>818</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>chad@legendarysolutions.io</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipientId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>logEmailOnSend</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailTemplateId</name>
+            <value>
+                <stringValue>00XUa000003e3DZ</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <description>JPM Installation Auto-Response Email</description>
+        <name>JPM_Installation_Auto_Response</name>
+        <label>JPM Installation Auto-Response</label>
+        <locationX>1050</locationX>
+        <locationY>1202</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>chad@legendarysolutions.io</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipientId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>logEmailOnSend</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailTemplateId</name>
+            <value>
+                <stringValue>00XUa000003fHO9</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <description>JPM Test Drive Auto-Response Email</description>
+        <name>JPM_Test_Drive_Auto_Response</name>
+        <label>JPM Test Drive Auto-Response</label>
+        <locationX>764</locationX>
+        <locationY>596</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>chad@legendarysolutions.io</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipientId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>logEmailOnSend</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailTemplateId</name>
+            <value>
+                <stringValue>00XUa000003e2kX</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <description>Shrinklink Installation Auto-Response Email</description>
+        <name>Shrinklink_Installation_Auto_Response</name>
+        <label>Shrinklink Installation Auto-Response</label>
+        <locationX>1437</locationX>
+        <locationY>819</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>chad@legendarysolutions.io</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipientId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>logEmailOnSend</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailTemplateId</name>
+            <value>
+                <stringValue>00XUa000003f7v3</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Is_it_FHT_Free_Trial</name>
+        <label>Is it FHT Free Trial?</label>
+        <locationX>332</locationX>
+        <locationY>731</locationY>
+        <defaultConnector>
+            <targetReference>Is_it_Installation</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not FHT Free Trial</defaultConnectorLabel>
+        <rules>
+            <name>FHT_Free_Trial</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Lead_Reason__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Free Trail</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.LeadSource</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Jpetto FHT – Advanced Field History Tracking &amp; Reporting</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>FHT_Free_Trial_Auto_Response</targetReference>
+            </connector>
+            <label>FHT Free Trial</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_it_FHT_Test_Drive</name>
+        <label>Is it FHT Test Drive?</label>
+        <locationX>331</locationX>
+        <locationY>554</locationY>
+        <defaultConnector>
+            <targetReference>Is_it_FHT_Free_Trial</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not FHT Test Drive</defaultConnectorLabel>
+        <rules>
+            <name>FHT_Test_Drive</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Lead_Reason__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Test Drive</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.LeadSource</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Jpetto FHT – Advanced Field History Tracking &amp; Reporting</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>FHT_Test_Drive_Auto_Response</targetReference>
+            </connector>
+            <label>FHT Test Drive</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_it_Installation</name>
+        <label>Is it Installation?</label>
+        <locationX>336</locationX>
+        <locationY>915</locationY>
+        <defaultConnectorLabel>FHT Not Installed</defaultConnectorLabel>
+        <rules>
+            <name>FHT_Installed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Lead_Reason__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Installation</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.LeadSource</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Jpetto FHT – Advanced Field History Tracking &amp; Reporting</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>FHT_Installation_Auto_Response</targetReference>
+            </connector>
+            <label>FHT Installed</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_it_JPM</name>
+        <label>Is it JPM?</label>
+        <locationX>1038</locationX>
+        <locationY>364</locationY>
+        <defaultConnector>
+            <targetReference>Is_It_Shrinklink</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not JPM</defaultConnectorLabel>
+        <rules>
+            <name>JPM</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.LeadSource</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Jpetto Project Manager</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Is_it_JPM_Test_Drive</targetReference>
+            </connector>
+            <label>JPM</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_it_JPM_Agentforce</name>
+        <label>Is it JPM -Agentforce?</label>
+        <locationX>1943</locationX>
+        <locationY>367</locationY>
+        <defaultConnectorLabel>Not JPM-Agentforce</defaultConnectorLabel>
+        <rules>
+            <name>JPM_Agentforce</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.LeadSource</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Jpetto Project Manager - Agentforce Suite</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Is_it_JPM_Agentforce_Test_Drive</targetReference>
+            </connector>
+            <label>JPM-Agentforce</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_it_JPM_Agentforce_Free_Trial</name>
+        <label>Is it JPM-Agentforce Free Trial</label>
+        <locationX>1933</locationX>
+        <locationY>817</locationY>
+        <defaultConnector>
+            <targetReference>Is_it_JPM_Agentforce_Installation</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not JPM-Agentforce Free Trial</defaultConnectorLabel>
+        <rules>
+            <name>JPM_Agentforce_Free_Trial</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.LeadSource</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Jpetto Project Manager - Agentforce Suite</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Lead_Reason__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Free Trail</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>JPM_Agentforce_Free_Trial_Auto_Response</targetReference>
+            </connector>
+            <label>JPM-Agentforce Free Trial</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_it_JPM_Agentforce_Installation</name>
+        <label>Is it JPM-Agentforce Installation</label>
+        <locationX>1929</locationX>
+        <locationY>1045</locationY>
+        <defaultConnectorLabel>Not JPM-Agentforce Installation</defaultConnectorLabel>
+        <rules>
+            <name>JPM_Agentforce_Installation</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.LeadSource</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Jpetto Project Manager - Agentforce Suite</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Lead_Reason__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Installation</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>JPM_Agentforce_Installation_Auto_Response</targetReference>
+            </connector>
+            <label>JPM-Agentforce Installation</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_it_JPM_Agentforce_Test_Drive</name>
+        <label>Is it JPM-Agentforce Test Drive?</label>
+        <locationX>1943</locationX>
+        <locationY>577</locationY>
+        <defaultConnector>
+            <targetReference>Is_it_JPM_Agentforce_Free_Trial</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not JPM-Agentforce Test Drive</defaultConnectorLabel>
+        <rules>
+            <name>JPM_Agentforce_Test_Drive</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.LeadSource</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Jpetto Project Manager - Agentforce Suite</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Lead_Reason__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Test Drive</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>JPM_Agentforce_Test_Drive_Auto_Response</targetReference>
+            </connector>
+            <label>JPM-Agentforce Test Drive</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_it_JPM_Free_Trial</name>
+        <label>Is it JPM Free Trial?</label>
+        <locationX>1038</locationX>
+        <locationY>819</locationY>
+        <defaultConnector>
+            <targetReference>Is_it_JPM_Installation</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not JPM Free Trial</defaultConnectorLabel>
+        <rules>
+            <name>JPM_Free_Trial</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Lead_Reason__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Free Trail</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.LeadSource</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Jpetto Project Manager</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>JPM_Free_Trial_Auto_Response</targetReference>
+            </connector>
+            <label>JPM Free Trial</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_it_JPM_Installation</name>
+        <label>Is it JPM Installation?</label>
+        <locationX>1040</locationX>
+        <locationY>1019</locationY>
+        <defaultConnectorLabel>JPM Not Installed</defaultConnectorLabel>
+        <rules>
+            <name>JPM_Installed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.LeadSource</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Jpetto Project Manager</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Lead_Reason__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Installation</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>JPM_Installation_Auto_Response</targetReference>
+            </connector>
+            <label>JPM Installed</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_it_JPM_Test_Drive</name>
+        <label>Is it JPM Test Drive?</label>
+        <locationX>1037</locationX>
+        <locationY>593</locationY>
+        <defaultConnector>
+            <targetReference>Is_it_JPM_Free_Trial</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not JPM Test Drive</defaultConnectorLabel>
+        <rules>
+            <name>JPM_Test_Drive</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.LeadSource</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Jpetto Project Manager</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Lead_Reason__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Test Drive</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>JPM_Test_Drive_Auto_Response</targetReference>
+            </connector>
+            <label>JPM Test Drive</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check the lead created is for FHT package or not.</description>
+        <name>Is_it_related_to_FHT</name>
+        <label>Is it related to FHT?</label>
+        <locationX>333</locationX>
+        <locationY>362</locationY>
+        <defaultConnector>
+            <targetReference>Is_it_JPM</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not FHT</defaultConnectorLabel>
+        <rules>
+            <name>FHT</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.LeadSource</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Jpetto FHT – Advanced Field History Tracking &amp; Reporting</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Is_it_FHT_Test_Drive</targetReference>
+            </connector>
+            <label>FHT</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_It_Shrinklink</name>
+        <label>Is It Shrinklink?</label>
+        <locationX>1426</locationX>
+        <locationY>366</locationY>
+        <defaultConnector>
+            <targetReference>Is_it_JPM_Agentforce</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not shrinklink</defaultConnectorLabel>
+        <rules>
+            <name>Shrinklink</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.LeadSource</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>ShrinkLink URL Shortener</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Is_it_shrinklink_Installation</targetReference>
+            </connector>
+            <label>Shrinklink</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_it_shrinklink_Installation</name>
+        <label>Is it shrinklink Installation?</label>
+        <locationX>1429</locationX>
+        <locationY>584</locationY>
+        <defaultConnectorLabel>Not Installed</defaultConnectorLabel>
+        <rules>
+            <name>Shrinklink_Installed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Lead_Reason__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Installation</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.LeadSource</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>ShrinkLink URL Shortener</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Shrinklink_Installation_Auto_Response</targetReference>
+            </connector>
+            <label>Shrinklink Installed</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>Lead Response Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Lead Response Flow</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>218</locationX>
+        <locationY>5</locationY>
+        <connector>
+            <targetReference>Is_it_related_to_FHT</targetReference>
+        </connector>
+        <object>Lead</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

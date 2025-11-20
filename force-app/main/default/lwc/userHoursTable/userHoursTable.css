@@ -1,0 +1,15 @@
+.container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    background-color: #f0f0f0;
+    padding: 8px 0;
+    font-weight: bold;
+    border: 1px solid #000;
+
+}
+.custom-dropdown {
+    width: auto; /* Let the width adjust to content */
+    display: inline-block; /* Display inline to be closer to text */
+
+}

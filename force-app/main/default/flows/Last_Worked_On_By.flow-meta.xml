@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Tracks who has recently worked on the work item.</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>DateandNameoflastactivity</name>
+        <dataType>String</dataType>
+        <expression>IF(
+    MONTH($Record.Jpetto__Date_Worked__c) &lt; 10,
+    &quot;0&quot; &amp; TEXT(MONTH($Record.Jpetto__Date_Worked__c)),
+    TEXT(MONTH($Record.Jpetto__Date_Worked__c))
+) &amp; &quot;/&quot; &amp;
+IF(
+    DAY($Record.Jpetto__Date_Worked__c) &lt; 10,
+    &quot;0&quot; &amp; TEXT(DAY($Record.Jpetto__Date_Worked__c)),
+    TEXT(DAY($Record.Jpetto__Date_Worked__c))
+) &amp; &quot;/&quot; &amp;
+TEXT(YEAR($Record.Jpetto__Date_Worked__c)) &amp;
+&quot; : &quot; &amp;
+$User.FirstName &amp; &quot; &quot; &amp; $User.LastName &amp;
+&quot; (&quot; &amp; TEXT($Record.Jpetto__Hours__c) &amp; &quot; hours)&quot; &amp; &quot; : &quot; &amp; $Record.Id</expression>
+    </formulas>
+    <formulas>
+        <name>FormattedUserandDate</name>
+        <dataType>String</dataType>
+        <expression>{!$User.FirstName} + &quot; &quot; + {!$User.LastName} + &quot; -&gt; &quot; + TEXT(MONTH(DATEVALUE({!$System.OriginDateTime}))) + &quot;/&quot; + TEXT(DAY(DATEVALUE({!$System.OriginDateTime}))) + &quot;/&quot; + TEXT(YEAR(DATEVALUE({!$System.OriginDateTime})))</expression>
+    </formulas>
+    <formulas>
+        <name>useranddate</name>
+        <dataType>String</dataType>
+        <expression>{!$User.FirstName}+&quot; &quot;+{!$User.LastName}+&quot; - &quot;+TEXT({!$System.OriginDateTime})</expression>
+    </formulas>
+    <formulas>
+        <name>UserandTimestamp</name>
+        <dataType>String</dataType>
+        <expression>{!$User.FirstName} + &quot; &quot; + {!$User.LastName} + &quot; : &quot; + TEXT(MONTH(TODAY())) + &quot;/&quot; + TEXT(DAY(TODAY())) + &quot;/&quot; + TEXT(YEAR(TODAY()))</expression>
+    </formulas>
+    <formulas>
+        <name>UserNameandDateofActivity</name>
+        <dataType>String</dataType>
+        <expression>{!$User.FirstName} + &quot; &quot; + {!$User.LastName} + &quot; -&gt; &quot; + TEXT(MONTH({!$Record.Jpetto__Date_Worked__c})) + &quot;/&quot; + TEXT(DAY({!$Record.Jpetto__Date_Worked__c})) + &quot;/&quot; + TEXT(YEAR({!$Record.Jpetto__Date_Worked__c}))</expression>
+    </formulas>
+    <interviewLabel>Last Worked On By {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Last Worked On By</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>Updates parent work item to sync Last Modified Date to the person who has most recently logged hours to that work item</description>
+        <name>Touch_Related_Work_Item</name>
+        <label>Touch Related Work Item</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <inputAssignments>
+            <field>Last_Work_Date__c</field>
+            <value>
+                <elementReference>$Record.Jpetto__Date_Worked__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Last_Worked_On_By__c</field>
+            <value>
+                <elementReference>DateandNameoflastactivity</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.Jpetto__Work_Item__r</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Touch_Related_Work_Item</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Total_Hours__c</field>
+            <operator>GreaterThan</operator>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </filters>
+        <object>Jpetto__Timesheet_Entry__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>
