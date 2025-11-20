@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<IndustriesSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+    <enableAccountScoreEnabled>false</enableAccountScoreEnabled>
+    <enableContractSearchPref>false</enableContractSearchPref>
+    <enableContractsAIPref>false</enableContractsAIPref>
+    <enableDontSharePartyprofWPortalOrgPref>false</enableDontSharePartyprofWPortalOrgPref>
+    <enablePartyProfileParentSharingOrgPref>false</enablePartyProfileParentSharingOrgPref>
+    <enablePartyprofParentMultiSharingOrgPref>false</enablePartyprofParentMultiSharingOrgPref>
+    <enableScoringFrameworkOrgPref>false</enableScoringFrameworkOrgPref>
+    <partyProfMultiShrPrtnrsOrgPref>false</partyProfMultiShrPrtnrsOrgPref>
+    <rlaEditIfAccHasEdit>false</rlaEditIfAccHasEdit>
+</IndustriesSettings>
