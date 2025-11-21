@@ -1,0 +1,4 @@
+"Active__c","DeveloperName","Email_Domain__c","Id","Label","Language","MasterLabel","NamespacePrefix","QualifiedApiName","Queue_Developer_Name__c","Queue_Name__c","SystemModstamp"
+"true","EDQ_01","dodge.com","m0URK00000ACelV2AT","EDQ-01","en_US","EDQ-01","","EDQ_01","Dodge_Support","Dodge Support","2025-10-24T16:10:57.000Z"
+"true","EDQ_02","recon.com","m0URK00000ACZly2AH","EDQ-02","en_US","EDQ-02","","EDQ_02","Recon_Support","Recon Support","2025-10-24T16:12:17.000Z"
+"true","EDQ_03","sophusconsulting.com","m0URK00000ACen72AD","EDQ-03","en_US","EDQ-03","","EDQ_03","Sophus_Support","Sophus Support","2025-10-24T16:12:54.000Z"

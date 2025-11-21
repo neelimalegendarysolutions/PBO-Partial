@@ -1,0 +1,3 @@
+"CreatedById","CreatedDate","Enable_Quick_Action__c","Id","IsDeleted","Kanban_Filters__c","LastModifiedById","LastModifiedDate","Name","SetupOwnerId","SystemModstamp"
+"0053t000008GkyTAAS","2025-10-20T09:42:48.000Z","true","a1fRK000001tV93YAE","false","","0053t000008GkyTAAS","2025-10-20T09:42:48.000Z","a1fRK000001tV93","00DRK00000G27XG2AZ","2025-10-20T09:42:48.000Z"
+"0053t000008GkyTAAS","2025-10-20T10:35:22.000Z","true","a1fRK000001tVQnYAM","false","{""searchIn"":""All"",""searchText"":"""",""workItems"":""All Work Items""}","0053t000008GkyTAAS","2025-11-18T07:12:24.000Z","KANBAN Quick Actions (User)","0053t000008GkyTAAS","2025-11-18T07:12:24.000Z"
